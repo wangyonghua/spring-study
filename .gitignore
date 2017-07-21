@@ -3,3 +3,6 @@ RemoteSystemsTempFiles
 Spring-Ioc/.*
 Spring_Day01/.*
 .recommenders/
+/bin/
+.classpath
+.project

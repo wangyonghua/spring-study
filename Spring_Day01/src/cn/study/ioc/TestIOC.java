@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.study.bean.Bean2;
+import com.study.bean.Bean3;
 
 public class TestIOC {
 	@Test
@@ -19,6 +20,14 @@ public class TestIOC {
 	public void testUser1() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
 		Bean2 user = (Bean2) context.getBean("bean2");
+		System.out.println(user);
+		user.add();
+	}
+	
+	@Test
+	public void testUser2() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+		Bean3 user = (Bean3) context.getBean("bean3");
 		System.out.println(user);
 		user.add();
 	}
