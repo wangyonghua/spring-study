@@ -2,3 +2,4 @@ RemoteSystemsTempFiles
 .metadata
 Spring-Ioc/.*
 Spring_Day01/.*
+.recommenders/
