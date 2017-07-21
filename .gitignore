@@ -6,3 +6,4 @@ Spring_Day01/.*
 /bin/
 .classpath
 .project
+.settings
