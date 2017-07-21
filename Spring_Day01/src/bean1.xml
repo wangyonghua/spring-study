@@ -5,4 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="user" class="cn.study.ioc.User"></bean>
+	<!-- 使用静态工厂创建对象 -->
+	<bean id="bean2" class="com.study.bean.Bean2Factory"
+		factory-method="getBean2"></bean>
 </beans>
