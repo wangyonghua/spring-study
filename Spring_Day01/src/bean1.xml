@@ -18,4 +18,10 @@
 	<bean id="book" class="com.study.property.Book">
 		<property name="bookname" value="java"></property>
 	</bean>
+	<!-- 复杂属性注入 -->
+	<bean id="userDao" class="com.study.property.UserDao"></bean>
+	<bean id="userService" class="com.study.property.UserService">
+		<property name="dao" ref="userDao"></property>
+	</bean>
+
 </beans>

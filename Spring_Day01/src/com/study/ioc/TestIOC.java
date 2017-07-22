@@ -8,6 +8,7 @@ import com.study.bean.Bean2;
 import com.study.bean.Bean3;
 import com.study.property.Book;
 import com.study.property.PropertyDemo1;
+import com.study.property.UserService;
 
 public class TestIOC {
 	@Test
@@ -51,5 +52,13 @@ public class TestIOC {
 		Book user = (Book) context.getBean("book");
 		System.out.println(user);
 		user.test();
+	}
+
+	@Test
+	public void testUserService() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+		UserService user = (UserService) context.getBean("userService");
+		System.out.println(user);
+		user.add();
 	}
 }
