@@ -24,5 +24,36 @@
 	<bean id="userService" class="com.study.property.UserService">
 		<property name="dao" ref="userDao"></property>
 	</bean>
-<bean id="person" class="com.study.property.Person" p:pname="wang"></bean>
+	<!-- P名称空间注入 -->
+    <bean id="person1" class="com.study.property.Person" p:pname="wang">
+    </bean>
+    <!-- 注入复杂类型           数组           list集合        map集合        properties类型 -->
+    <bean id="person" class="com.study.property.Person">
+       <property name="arr">
+        <list>
+          <value>123</value>
+          <value>456</value>
+          <value>346</value>
+        </list>
+       </property>
+       <property name="list">
+        <list>
+          <value>123</value>
+          <value>456</value>
+          <value>346</value>
+        </list>
+       </property>
+       <property name="map">
+        <map>
+         <entry key="aa" value="wang"></entry>
+          <entry key="cc" value="cc"></entry>
+        </map>
+       </property>
+       <property name="properties">
+         <props>
+            <prop key="driverClass">com.mysql.jdbc.Drivel</prop>
+         </props>
+       </property>
+    </bean>
+
 </beans>
