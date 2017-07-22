@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.study.bean.Bean2;
 import com.study.bean.Bean3;
+import com.study.property.Book;
 import com.study.property.PropertyDemo1;
 
 public class TestIOC {
@@ -42,5 +43,13 @@ public class TestIOC {
 		PropertyDemo1 user = (PropertyDemo1) context.getBean("bean4");
 		System.out.println(user);
 		user.test1Demo();
+	}
+
+	@Test
+	public void testBook() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+		Book user = (Book) context.getBean("book");
+		System.out.println(user);
+		user.test();
 	}
 }

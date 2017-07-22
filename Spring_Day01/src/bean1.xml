@@ -14,4 +14,8 @@
 		<constructor-arg name="username" value="wangyonghua">
 		</constructor-arg>
 	</bean>
+	<!-- 使用Set属性注入 -->
+	<bean id="book" class="com.study.property.Book">
+		<property name="bookname" value="java"></property>
+	</bean>
 </beans>
