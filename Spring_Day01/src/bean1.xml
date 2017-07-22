@@ -4,10 +4,14 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="cn.study.ioc.User"></bean>
+	<bean id="user" class="com.study.ioc.User"></bean>
 	<!-- 使用静态工厂创建对象 -->
 	<bean id="bean2" class="com.study.bean.Bean2Factory"
 		factory-method="getBean2"></bean>
-		<bean id="bean3Factory" class="com.study.bean.Bean3Factory"></bean>
-		<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"></bean>
+	<bean id="bean3Factory" class="com.study.bean.Bean3Factory"></bean>
+	<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"></bean>
+	<bean id="bean4" class="com.study.property.PropertyDemo1">
+		<constructor-arg name="username" value="wangyonghua">
+		</constructor-arg>
+	</bean>
 </beans>
