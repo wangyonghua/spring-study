@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+	<!-- 使用表达式配置切入点 -->
+	<!-- 常用表达式 -->
+	<!-- execution(<访问修饰符>?<返回类型><方法名>(<参数>)<异常>) 1.execution(* cn.itcast.aop.book.add(..)) 
+		2.execution(* cn.itcats.aop.book.*(..)) 3.execution(* *.*(..)) 4.execution(* 
+		save*(..)) 匹配所有save开头的方法 -->
+
+	<context:component-scan base-package="cn.itcast.aop" />
+	<!-- <bean id="book" class="cn.itcast.aop.Book"></bean> <bean id="myBook" 
+		class="cn.itcast.aop.MyBook"></bean> -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+</beans>

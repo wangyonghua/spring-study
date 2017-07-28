@@ -5,6 +5,7 @@
 
 <struts>
 	<package name="demo1" extends="struts-default" namespace="/">
-	    <action name="userAction" class="cn.itcast.action.UserAction"></action>
+	    <action name="userAction" class="cn.itcast.action.UserAction">
+	    </action>
 	</package>
 </struts> 
