@@ -1,15 +1,16 @@
 package cn.itcast.jdbc;
 
-
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import java.sql.Connection;  
-import java.sql.DriverManager;  
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 1 导入jar 2.创建对象，设置数据库的信息 3.创建jdbcTempalte
@@ -61,6 +62,33 @@ public class jdbcTemplateDemo {
 		}
 	}
 
+	@Test
+	public void testObject() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql:///hhl_msg_center");
+		dataSource.setUsername("root");
+		dataSource.setPassword("123456");
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		String sql = "select * from user where username=?";
+		User user = jdbcTemplate.queryForObject(sql, new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet rs, int num) throws SQLException {
+				// TODO Auto-generated method stub
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				User user = new User();
+				user.setUsername(username);
+				user.setPassword(password);
+
+				return user;
+			}
+		}, "lucy");
+
+		System.out.println(user.getUsername());
+	}
+
 	public static void main(String[] args) {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -82,8 +110,20 @@ public class jdbcTemplateDemo {
 		// String sql = "select count(*) from user";
 		// int count = jdbcTemplate.queryForObject(sql, Integer.class);
 
-		String sql1 = "select * from user where username='lucy'";
-		User user = jdbcTemplate.queryForObject(sql1, User.class);
+		String sql = "select * from user where username=?";
+		User user = jdbcTemplate.queryForObject(sql, new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet rs, int num) throws SQLException {
+				// TODO Auto-generated method stub
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				User user = new User();
+				user.setUsername(username);
+				user.setPassword(password);
+
+				return user;
+			}
+		}, "lucy");
 
 		System.out.println(user);
 	}
