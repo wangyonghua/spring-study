@@ -89,6 +89,33 @@ public class jdbcTemplateDemo {
 		System.out.println(user.getUsername());
 	}
 
+	@Test
+	public void testList() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql:///hhl_msg_center");
+		dataSource.setUsername("root");
+		dataSource.setPassword("123456");
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		String sql = "select * from user";
+		List<User> user = jdbcTemplate.query(sql, new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet rs, int num) throws SQLException {
+				// TODO Auto-generated method stub
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				User user = new User();
+				user.setUsername(username);
+				user.setPassword(password);
+
+				return user;
+			}
+		});
+
+		System.out.println(user);
+	}
+
 	public static void main(String[] args) {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
