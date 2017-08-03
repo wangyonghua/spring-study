@@ -40,4 +40,17 @@ public class C3p0Test {
 
 		System.out.println(user);
 	}
+
+	@Test
+	public void testAutowired() throws PropertyVetoException {
+		// ComboPooledDataSource dataSource = new ComboPooledDataSource();
+		// dataSource.setDriverClass("com.mysql.jdbc.Driver");
+		// dataSource.setJdbcUrl("jdbc:mysql:///hhl_msg_center");
+		// dataSource.setUser("root");
+		// dataSource.setPassword("123456");
+		ApplicationContext context = new ClassPathXmlApplicationContext("Bean3.xml");
+		UserService userService = (UserService) context.getBean("userService");
+		userService.add();
+		System.out.println("ok");
+	}
 }
