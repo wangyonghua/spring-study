@@ -38,3 +38,10 @@ Struts2框架
   -重写类里面的方法
   -配置拦截器和action关联
   
+  
+  Spring框架整合hibernate框架
+  
+  1. 把hibernate核心配置文件中配置数据库信息，把数据库信息在spring进行配置
+  2. 把hibernate里面的sessionFactory创建交给spring管理
+  
+  
