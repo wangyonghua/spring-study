@@ -18,9 +18,20 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	</bean>
 	<!-- SessionFactory创建交给Spring管理 -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
 		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
-	<bean id="userAction" class="cn.itcast.action.UserAction" scope="prototype"></bean>
+	<bean id="userAction" class="cn.itcast.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userService" class="cn.itcast.service.UserService">
+		<property name="dao" ref="userDaoImpl"></property>
+	</bean>
+	<bean id="userDaoImpl" class="cn.itcast.dao.UserDaoImpl">
+		<property name="template" ref="template"></property>
+	</bean>
+	<bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 </beans>
