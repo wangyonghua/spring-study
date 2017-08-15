@@ -1,6 +1,6 @@
 package cn.itcast.dao;
 
-import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import cn.itcast.entity.User;
 

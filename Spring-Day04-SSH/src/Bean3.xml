@@ -18,7 +18,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	</bean>
 	<!-- SessionFactory创建交给Spring管理 -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
 		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
@@ -31,7 +31,14 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<bean id="userDaoImpl" class="cn.itcast.dao.UserDaoImpl">
 		<property name="template" ref="template"></property>
 	</bean>
-	<bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">
+	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<!-- 配置事务管理器 -->
+	<!-- 注解开启事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
