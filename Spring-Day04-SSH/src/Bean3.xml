@@ -35,15 +35,6 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 			</list>
 		</property>
 	</bean>
-	<bean id="userAction" class="cn.itcast.action.UserAction" scope="prototype">
-		<property name="userService" ref="userService"></property>
-	</bean>
-	<bean id="userService" class="cn.itcast.service.UserService">
-		<property name="dao" ref="userDaoImpl"></property>
-	</bean>
-	<bean id="userDaoImpl" class="cn.itcast.dao.UserDaoImpl">
-		<property name="template" ref="template"></property>
-	</bean>
 	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -54,4 +45,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- Spring 分模块开发 -->
+	 <import resource="classpath:user.xml" />
 </beans>
